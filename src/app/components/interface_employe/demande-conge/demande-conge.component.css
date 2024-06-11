@@ -1,0 +1,92 @@
+.background-box {
+  background-color: #F9F9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; 
+}
+
+.formulaire-container {
+  background-color: #F9F9F9;
+  padding: 10px 20px 30px;
+  border-radius: 20px;
+  width: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.conge-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.input-container {
+  margin-bottom: 10px; 
+}
+
+.small-input {
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+.file-input {
+  padding-top: 8px;
+}
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #261b91;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #261b91;
+}
+
+.form-control.rounded {
+  border-radius: 20px; 
+}
+
+.form-title {
+  font-size: 24px; 
+  text-align: center; 
+  margin-bottom: 20px;
+  color: #333;
+}
+.form-group {
+  display: flex;
+}
+
+.input-container {
+  flex: 1;
+  margin-right: 10px; 
+}
+
+.input-container:last-child {
+  margin-right: 0; 
+}

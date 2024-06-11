@@ -1,0 +1,38 @@
+<h2>Accounts List </h2>
+
+<!-- Link to view chef accounts -->
+<a routerLink="/chef-accounts" class="btn btn-primary mr-2">View Chef Accounts</a>
+
+<!-- Link to view employee accounts -->
+<a routerLink="/employee-accounts" class="btn btn-primary">View Employee Accounts</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th>id</th>
+            <th>nom</th>
+            <th>prenom</th>
+           <th>login</th>
+            <th>password</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor ="let personnel of personnels">
+          <td>{{personnel.id}}</td>
+           <td>{{personnel.nom}}</td>
+           <td>{{personnel.prenom}}</td>
+    
+           <td>{{personnel.login}}</td>
+           <td>{{personnel.password}}</td>
+          
+      <td>
+       
+        <button (click) = "modifierPersonnel(personnel.id)" class="btn btn-info">Modifier</button>
+      </td>
+      <td>
+        <button (click) = "supprimerPersonnel(personnel.id)" class="btn btn-danger">Supprimer</button>
+      </td>
+         </tr>
+        
+    </tbody>
+</table>

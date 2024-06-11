@@ -1,0 +1,54 @@
+
+<!---->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<script src="/assets/js/script.js"></script>
+
+<div >
+<section id="content" >
+<app-layout></app-layout>
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Dashboard</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Dashboard</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li (click)="redirectToHome()">
+            <a class="active" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+     <div   *ngIf="userProfile?.role !== 'CHEF' && userProfile?.role !== 'EMPLOYEE'">
+      <iframe title="admin"  class="rounded-iframe" width="1150" height="500.5" src="https://app.powerbi.com/view?r=eyJrIjoiNjllOTM3YjgtMTJlNi00NGMyLTk4OWEtNmQyYjk0ZWY2OWY0IiwidCI6ImRiZDY2NjRkLTRlYjktNDZlYi05OWQ4LTVjNDNiYTE1M2M2MSIsImMiOjl9" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+      <div *ngIf="userProfile?.role !== 'CHEF' && userProfile?.role !== 'ADMIN'">
+        <app-percongechart></app-percongechart>
+ </div>
+    <div *ngIf="userProfile?.role !== 'EMPLOYEE' && userProfile?.role !== 'ADMIN'">
+      <app-congechart></app-congechart>
+    </div>
+  </main>
+
+</section>
+</div>
+
+
+
+
+

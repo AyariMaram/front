@@ -1,0 +1,112 @@
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+  <app-layout></app-layout>
+
+  <!-- MAIN -->
+  <main>
+
+
+    <div class="head-title">
+      <div class="left">
+        <h1>Congés</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Congés</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active"  (click)="redirectToHome()">Acceuil</a>
+          </li>
+        </ul>
+
+      </div>
+     <div class="right">
+      <a  class="circle-blue" (click)="toggleCalendar()">
+        <i class='bx bx-calendar'></i>
+      </a>
+    </div>
+
+    </div>
+
+
+
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Congés</h3>
+          <i    class='bx bx-search' title="Rechercher" (click)="openSearchBox()" ></i>
+          <div *ngIf="showSearchBox" class="search-box">
+            <input #searchInput type="text" placeholder="Rechercher ..."  (keyup.enter)="searchcongess(searchInput.value)"   >
+          </div>            <i class='bx bx-filter' ></i>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date demande</th>
+              <th>Date debut</th>
+              <th>Date fin</th>
+              <th>Durée</th>
+              <th>Statut</th>
+              <th>Type</th>
+              <th>Motif</th>
+              <th>Justification</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let conge of conges">
+              <td>{{ conge.date_demande | date:'dd-MM-yyyy' }}</td>
+              <td>{{ conge.date_debut | date:'dd-MM-yyyy' }}</td>
+              <td>{{ conge.date_fin | date:'dd-MM-yyyy' }}</td>
+              <td>{{ conge.duree }}</td>
+
+              <td >
+                <span [ngStyle]="getStatusStyle(conge.statut)">{{ conge.statut }}</span>
+              </td>
+
+
+              <td>{{ conge.type }}</td>
+              <td>{{ conge.motif }}</td>
+              <td>
+                <a (click)="afficherImage(getCongeId(conge), getCongefile(conge))"><i class="fa-regular fa-file fa-lg"></i></a>
+              </td>
+
+                <td>
+                  <button (click)="confirmerConge(conge.id)" >  <i    title="Confirmer" style="color: #34e540;" class="fa-solid fa-check fa-xl"></i></button>
+
+
+                  <button  (click)="refuserConge(conge.id)">  <i    title="Refuser" style="color: #ff2929;" class="fa-solid fa-x fa-lg"></i></button>
+                </td>
+
+
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <!-- MAIN -->
+</section>
+
+</div>
+<!-- CONTENT -->
+
+
+<div *ngIf="imageSrc" class="image-overlay">
+  <div class="image-container">
+    <img [src]="imageSrc" alt="Image du congé" class="image-preview">
+    <span class="close-button" (click)="closeImage()">
+      <i class="fa-solid fa-x fa-lg" ></i>
+    </span>
+      </div>
+</div>

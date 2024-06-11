@@ -1,0 +1,24 @@
+.blue-text {
+    color: #261b91;
+  }
+  
+  .notification-item {
+    border-bottom: 1px solid lightgray;
+  }
+  
+  .notification-item td {
+    padding: 10px;
+  }
+
+  /* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Optional: Add margin to space out the icons */
+button i {
+  margin: 0 5px; /* Adjust the margin as needed */
+}

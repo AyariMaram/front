@@ -1,0 +1,44 @@
+
+
+<!---->
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+  <app-layout></app-layout>
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Notification</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Notification</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" [routerLink]="['/homee']" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="notification-container">
+      <div class="col-md-6" *ngIf="selectedNotification">
+        <div class="notification-details">
+          <ul>
+      <li>   <h4><b>{{ selectedNotification.subject }} </b></h4></li>
+      <li>     <p>{{ selectedNotification.content }}</p></li>
+        </ul>
+        </div>
+
+      </div>
+    </div>

@@ -1,0 +1,15 @@
+/* Remove default button styles */
+button {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none; 
+}
+
+  
+  /* Optional: Add margin to space out the icons */
+  button i {
+    margin: 0 5px; /* Adjust the margin as needed */
+  }
+  

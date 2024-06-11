@@ -1,0 +1,60 @@
+<div>
+  <section id="content">
+    <app-layout></app-layout>
+    <!-- MAIN -->
+    <main>
+      <div class="head-title">
+        <div class="left">
+          <h1>Calendrier</h1>
+          <ul class="breadcrumb">
+            <li>
+              <a href="#">Calendrier</a>
+            </li>
+            <li><i class='bx bx-chevron-right'></i></li>
+            <li (click)="redirectToHome()">
+              <a class="active">Accueil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="calendar-container">
+        <full-calendar [options]="calendarOptions">
+          <ng-template #eventContent let-arg>
+            <div [style.background-color]="arg.event.backgroundColor" (click)="handleEventClick(arg)">
+              <b>{{arg.timeText}}</b>
+              <i>{{arg.event.title}}</i>
+            </div>
+          </ng-template>
+        </full-calendar>
+      </div>
+    </main>
+  </section>
+
+
+
+  <div class="modal" *ngIf="selectedEvent">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <div class="conge-details-box">
+        <div class="conge-details">
+          <strong>Congé Details:</strong><br>
+          Type: {{ selectedEvent?.extendedProps.conge.type }}<br>
+          Date de demande: {{ selectedEvent?.extendedProps.conge.date_demande | date }}<br>
+          Date de début: {{ selectedEvent?.extendedProps.conge.date_debut | date }}<br>
+          Date de fin: {{ selectedEvent?.extendedProps.conge.date_fin | date }}<br>
+          Durée: {{ selectedEvent?.extendedProps.conge.duree }} jours<br>
+          Statut: {{ selectedEvent?.extendedProps.conge.statut }}<br>
+          Motif: {{ selectedEvent?.extendedProps.conge.motif }}<br>
+          Description: {{ selectedEvent?.extendedProps.conge.description }}<br>
+          <strong>User Details:</strong><br>
+          Matricule: {{ selectedEvent?.extendedProps.user.matricule }}<br>
+          Nom: {{ selectedEvent?.extendedProps.user.nom }}<br>
+          Prtenom: {{ selectedEvent?.extendedProps.user.prenom }}<br>
+          Service: {{ selectedEvent?.extendedProps.user.service }}<br>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

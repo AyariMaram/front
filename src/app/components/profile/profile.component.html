@@ -1,0 +1,107 @@
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/js/script.js"></script>
+
+<section id="content">
+  <app-layout></app-layout>
+
+  <main>
+
+    <div class="head-title">
+      <div class="left">
+        <h1>Profil</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Profil</a>
+          </li>
+          <li><i class='bx bx-chevron-right'></i></li>
+          <li>
+            <a class="active" href="#">Acceuil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="formulaire">
+
+        <div class="head">
+          <h3>Modifier Profil</h3>
+        </div>
+
+        <form *ngIf="userForm" [formGroup]="userForm" class="user-form">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="nom">Nom :</label>
+              <input type="text" formControlName="nom" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['nom'].errors?.['required'] }"><br>
+              <span *ngIf="submitted && userForm.controls['nom'].errors?.['required']" class="text-danger">Nom requis</span>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="prenom">Prénom :</label>
+              <input type="text" formControlName="prenom" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['prenom'].errors?.['required'] }"><br>
+              <span *ngIf="submitted && userForm.controls['prenom'].errors?.['required']" class="text-danger">Prénom requis</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="statut">Statut :</label>
+              <input type="text" formControlName="statut" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['statut'].errors?.['required'] }"><br>
+              <span *ngIf="submitted && userForm.controls['statut'].errors?.['required']" class="text-danger">Statut requis</span>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="nbrEnfant">Nombre d'enfants :</label>
+              <input type="text" formControlName="nbrEnfant" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['nbrEnfant'] }"><br>
+              <span *ngIf="submitted && userForm.controls['nbrEnfant'].errors?.['required']" class="text-danger">Nombre d'enfants requis</span>
+              <span *ngIf="submitted && userForm.controls['nbrEnfant']?.errors?.['invalidNumberOfChildren']" class="text-danger">Nombre d'enfants invalide</span>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="service">Service :</label>
+              <input type="text" formControlName="service" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['service'].errors?.['required'] }"><br>
+              <span *ngIf="submitted && userForm.controls['service'].errors?.['required']" class="text-danger">Service requis</span>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="tel">Téléphone :</label>
+              <input type="text" formControlName="tel" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && (userForm.controls['tel'].errors?.['invalidPhoneNumber'] || userForm.controls['tel'].errors?.['required']) }"><br>
+              <span *ngIf="submitted && userForm.controls['tel'].errors?.['required']" class="text-danger ">Téléphone requis</span>
+              <span *ngIf="submitted && userForm.controls['tel'].errors?.['invalidPhoneNumber']" class="text-danger ">Format invalide
+                <small>( Le téléphone doit composer de 8 chiffres)</small>
+              </span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="email">Email :</label>
+              <input type="text" formControlName="email" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.get('email')?.errors }"><br>
+              <span *ngIf="submitted && userForm.controls['email'].errors?.['required']" class="text-danger">Email requis</span>
+              <span *ngIf="submitted && userForm.controls['email'].errors?.['invalidEmail']" class="text-danger">Format invalide
+                <small>(Email de format email&#64;gmail.com)</small>
+              </span>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="matricule">Matricule :</label>
+              <input type="text" formControlName="matricule" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.get('matricule')?.errors }" readonly><br>
+              <span *ngIf="submitted && userForm.controls['matricule'].errors?.['required']" class="text-danger">Email requis</span>
+            </div>
+
+          </div>
+
+          <br>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" (click)="ModifierProfil()">Modifier</button>&nbsp;
+            <button type="button" class="btn btn-primary" (click)="redirectToHome()">Annuler</button>
+          </div>
+        </form>
+
+      </div>
+
+  </main>
+</section>

@@ -1,0 +1,13 @@
+.chart-container {
+    display: inline-block;
+    width: 30%; /* Adjust width as needed */
+    margin-right: 20px; /* Adjust spacing between charts */
+  }
+  
+  .chart-canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+  
+
+  

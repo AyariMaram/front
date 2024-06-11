@@ -1,0 +1,58 @@
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+  <app-layout></app-layout>
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Paramètres</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Paramètres</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li (click)="redirectToHome()">
+            <a class="active" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <ul class="box-info">
+      <li>
+        <i class='bx bx-lock'></i>
+        <span class="text">
+          <h3>Sécurité</h3>
+          <p><a href="#" [routerLink]="['changermdp']"  style="color: grey;">Changer le mot de passe</a></p>
+        </span>
+      </li>
+    </ul>
+    
+    
+<ul class="box-info">
+  <li  >
+    <i class="bx bx-user"></i>
+    <span class="text">
+      <h3>Modifier Profil</h3>
+      <p><a href="#"  [routerLink]="['/auth/profile']" style="color: grey;">Changer vos données</a></p>
+
+      <p></p>
+    </span>
+  </li>
+</ul>
+
+
+
+  </main>
+  <!-- MAIN -->
+</section>
+</div>
+<!-- CONTENT -->

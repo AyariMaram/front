@@ -1,0 +1,47 @@
+.form-control {
+    width: 200px; 
+    height: 30px;
+  }
+  
+  .formulaire {
+    background-color: #F9F9F9; 
+    border-radius: 20px; 
+    padding: 20px; 
+    margin-top: 20px; 
+  }
+  
+
+  .form-group {
+    margin-bottom: 10px; 
+  }
+  
+  .btn {
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: #ffffff; 
+    border: none; 
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; 
+    color: #ffffff; 
+    border: none; 
+  }
+  
+  .text-danger {
+    color: #dc3545; 
+  }
+.formulaire .form-group {
+    margin-bottom: 0;
+  }
+  
+  .formulaire label,
+  .formulaire input {
+    margin-bottom: 5px;
+  }
+  

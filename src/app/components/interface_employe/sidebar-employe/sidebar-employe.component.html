@@ -1,0 +1,78 @@
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- SIDEBAR -->
+<section id="sidebar">
+  <a id="sidebar-toggle" ><img src="../../../assets/img/logi.png" style="width: 230px; height: auto; padding:15px"></a>
+
+
+
+  <ul class="side-menu top">
+    <li class="active">
+      <a href="#" (click)="redirectTodashbboard()">
+        <i class='bx bxs-dashboard' ></i>
+        <span class="text">Dashboard</span>
+      </a>
+    </li>
+
+      <li>
+        <a (click)="redirectToAjouerConges()" >
+          <i class='bx bxs-add-to-queue' ></i>
+          <span class="text">Ajouter Congés</span>
+        </a>
+      </li>
+
+      <li >
+        <a (click)="redirectToMesConges()">
+          <i class='bx bxs-archive archive-icon'></i>
+          <span class="text">Mes Congés</span>
+        </a>
+      </li>
+
+
+
+
+
+    <li>
+      <a  (click)="redirectToNotifications()" >
+        <i class='bx bxs-doughnut-chart' ></i>
+        <span class="text"  >Notifications</span>
+      </a>
+    </li>
+  </ul>
+  <ul class="side-menu">
+    <li  title="Paramètres"  [routerLink]="['/parametre']">
+      <a>
+        <i class='bx bxs-cog' ></i>
+        <span class="text">Paramètres </span>
+      </a>
+    </li>
+    <li title="Déconnexion" >
+      <a (click)="onLogout()" class="logout">
+        <i class='bx bxs-log-out-circle' ></i>
+        <span class="text" >Déconnexion</span>
+      </a>
+    </li>
+  </ul>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var sidebarToggle = document.getElementById('sidebar-toggle');
+    var logoImg = sidebarToggle.querySelector('img');
+
+    sidebarToggle.addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('hide')) {
+
+            logoImg.style.display = 'none';
+        } else {
+
+            logoImg.style.display = 'block';
+        }
+    });
+});
+
+</script>

@@ -1,0 +1,114 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="modal-content">
+      <div class="card p-3">
+        <h2>Formulaire</h2>
+        <form [formGroup]="userForm" (ngSubmit)="ajouterUser()">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="nom">Nom :</label>
+                <input type="text" formControlName="nom" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['nom'].errors?.['required'] }">
+                <span *ngIf="submitted && userForm.controls['nom'].errors?.['required']" class="text-danger">Nom requis</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="prenom">Prénom :</label>
+                <input type="text" formControlName="prenom" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['prenom'].errors?.['required'] }">
+                <span *ngIf="submitted && userForm.controls['prenom'].errors?.['required']" class="text-danger">Prénom requis</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cin">Cin :</label>
+            <input type="text" formControlName="cin" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && (userForm.controls['cin'].errors?.['invalidCin'] || userForm.controls['cin'].errors?.['required']) }">
+            <span *ngIf="submitted && userForm.controls['cin'].errors?.['required']" class="text-danger">Cin requis</span>
+            <span *ngIf="submitted && userForm.controls['cin'].errors?.['cinLength']" class="text-danger">
+              Format invalide <small>( Le cin doit composer de 8 chiffres, actuellement: {{ userForm.controls['cin'].value?.length }} chiffres)</small>
+            </span>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="statut">Statut :</label>
+                <select formControlName="statut" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['statut'].errors?.['required'] }">
+                  <option value="celibataire">Célibataire</option>
+                  <option value="marie">Marié</option>
+                </select>
+                <span *ngIf="submitted && userForm.controls['statut'].errors?.['required']" class="text-danger">Statut requis</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label [hidden]="userForm.get('statut')?.value !== 'marie'">Nombre d'enfants :</label>
+                <input type="number" formControlName="nbrEnfant" class="form-control rounded-custom" [hidden]="userForm.get('statut')?.value !== 'marie'" [ngClass]="{ 'invalid-input': submitted && userForm.controls['nbrEnfant'].errors?.['required'] }">
+                <span [hidden]="userForm.get('statut')?.value !== 'marie'" *ngIf="submitted && userForm.controls['nbrEnfant'].errors?.['required']" class="text-danger">Nombre d'enfants requis</span>
+                <span *ngIf="submitted && userForm.get('nbrEnfant')?.errors?.['invalidNumberOfChildren']" class="text-danger">Nombre d'enfants invalide</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="service">Service :</label>
+                <select formControlName="service" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['service'].errors?.['required'] }">
+                  <option value=" Achat">Achat</option>
+                  <option value=" Vente: hotellerie">Vente: hotellerie</option>
+                  <option value=" Administratifs et financiers">Administratifs et financiers</option>
+                  <option value=" Developpement">Developpement</option>
+                  <option value=" Document">Document</option>
+                  <option value=" Juridique">Juridique </option>
+                  <option value=" Technique"><Table></Table>echnique</option>
+                  <option value=" Vente: grands comptes et societé privé">Vente: grands comptes et société privé</option>
+                  <option value=" Vente: marchés publiques">Vente: marchés publiques</option>
+                  <option value=" Web d'administration système">Web d'administration système</option>
+                </select>
+                <span *ngIf="submitted && userForm.controls['service'].errors?.['required']" class="text-danger">Service requis</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="tel">Téléphone :</label>
+                <input type="text" formControlName="tel" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && (userForm.controls['tel'].errors?.['invalidPhoneNumber'] || userForm.controls['tel'].errors?.['required']) }" placeholder="+216 XXXXXXXX">
+                <span *ngIf="submitted && userForm.controls['tel'].errors?.['required']" class="text-danger">Téléphone requis</span>
+                <span *ngIf="submitted && userForm.controls['tel'].errors?.['invalidPhoneNumber']" class="text-danger">
+                  Format invalide <small>( Le téléphone doit composer de 8 chiffres)</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Sexe :</label><br>
+                <label><input type="radio" formControlName="sexe" value="homme"> Homme</label>
+                <label><input type="radio" formControlName="sexe" value="femme"> Femme</label><br>
+                <span *ngIf="submitted && userForm.controls['sexe'].errors?.['required']" class="text-danger">Sexe requis</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="email">Email :</label>
+                <input type="text" formControlName="email" class="form-control rounded-custom" [ngClass]="{ 'invalid-input': submitted && userForm.controls['email'].errors?.['required'] }">
+                <span *ngIf="submitted && userForm.controls['email'].errors?.['required']" class="text-danger">Email requis</span>
+                <span *ngIf="submitted && userForm.controls['email'].errors?.['invalidEmail']" class="text-danger">Format invalide
+                  <small>(Email de format email&#64;gmail.com)</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary rounded-custom">Enregistrer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

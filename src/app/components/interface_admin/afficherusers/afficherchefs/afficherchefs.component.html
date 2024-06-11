@@ -1,0 +1,112 @@
+<!---->
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+<app-layout></app-layout>
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Chefs</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Chefs</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" [routerLink]="['/homee']" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Chefs</h3>
+          <i class='bx bx-search' title="Rechercher" (click)="openSearchBox()" ></i>
+          <div *ngIf="showSearchBox" class="search-box">
+            <input #searchInput type="text" placeholder="Rechercher ..."  (keyup.enter)="searchUsers(searchInput.value)" >
+
+          </div>
+                    <div>
+            <i class='bx bx-plus add-new-icon' (click)="openModal('CHEF')" title="Ajouter Chef" ></i>
+          </div>
+
+          <div class="modal-container" *ngIf="showModal">
+            <app-ajouteruser role="CHEF"></app-ajouteruser>
+            <span class="close-icon" (click)="closeModal()" ><i class="fa fa-times" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cin</th>
+              <th>Matricule</th>
+              <th>nom  </th>
+              <th>Prenom </th>
+              <th>adresse </th>
+              <th>service </th>
+              <th>tel </th>
+              <th>statut</th>
+              <th>nbre enfant </th>
+              <th>sexe</th>
+              <th>role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let chef of chefs">
+              <td>
+
+              </td>
+              <td> {{chef.cin}}</td>
+              <td> {{chef.matricule}}</td>
+              <td> {{chef.nom}}</td>
+              <td>{{ chef.prenom }}</td>
+              <td>{{ chef.email }}</td>
+              <td>{{ chef.service }}</td>
+              <td>{{ chef.tel }}</td>
+              <td>{{chef.statut}}</td>
+              <td>{{ chef.nbrEnfant }}</td>
+              <td>{{ chef.sexe }}</td>
+              <td>{{ chef.role }}</td>
+              <td>
+              <a  class="edit " data-toggle="modal" (click)="afficherChef(chef.id)">
+              <i class="fa-solid fa-pen " style="color:#000080;" title="Modifier" ></i>
+              </a>&nbsp;
+              <a  class="delete" (click)="afficherConfirmationSuppression(chef.id)" >
+              <i class="fa-solid fa-trash" style="color: red;" title="Supprimer" ></i>
+              </a>
+
+              </td>
+             </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+
+  </main>
+</section>
+</div>
+
+<div class="modal-container" *ngIf="chefIdToDelete !== null">
+  <div class="confirmation-box">
+    <p>Voulez-vous supprimer ce Chef ?</p>
+    <div class="button-container">
+      <button class="confirm-button" (click)="supprimerChefConfirmation()">Oui</button>
+      <button class="cancel-button" (click)="annulerSuppression()">Non</button>
+    </div>
+  </div>
+</div>

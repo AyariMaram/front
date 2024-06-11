@@ -1,0 +1,42 @@
+<div *ngIf="userRole === 'ADMIN'">
+  <app-sidebar-admin></app-sidebar-admin>
+</div>
+<div *ngIf="userRole === 'CHEF'">
+  <app-sidebar-chef></app-sidebar-chef>
+</div>
+<div *ngIf="userRole === 'EMPLOYEE'">
+  <app-sidebar-employe></app-sidebar-employe>
+</div>
+<div *ngIf="userRole !== 'EMPLOYEE' && userRole !== 'ADMIN'  && userRole !== 'CHEF'   ">
+  <!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- SIDEBAR -->
+<section id="sidebar">
+  <a id="sidebar-toggle" ><img src="../../../assets/img/logi.png" style="width: 250px; height: auto;"></a>
+
+
+
+
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var sidebarToggle = document.getElementById('sidebar-toggle');
+    var logoImg = sidebarToggle.querySelector('img');
+
+    sidebarToggle.addEventListener('click', function() {
+        var sidebar = document.getElementById('sidebar');
+        if (sidebar.classList.contains('hide')) {
+
+            logoImg.style.display = 'none';
+        } else {
+
+            logoImg.style.display = 'block';
+        }
+    });
+});
+
+</script></div>

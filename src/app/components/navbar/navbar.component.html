@@ -1,0 +1,64 @@
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+  <!-- NAVBAR -->
+  <div >
+    <nav id="navbar">
+      <i class='bx bx-menu' [class.disabled]="disableMenuClick" (click)="!disableMenuClick "></i>
+      <form action="#"></form>
+     <!--<input type="checkbox" id="switch-mode" hidden>
+      <label for="switch-mode" class="switch-mode"></label>
+    -->
+      <a  class="notification" (click)="toggleNotification()" title="Notifications">
+        <i class='bx bxs-bell'></i>
+        <span class="num">{{ unreadNotification}}</span>
+      </a>
+
+      <div class="dropdown">
+        <a class="profile" (click)="toggleDropdown()" style="position: relative; display: inline-block;">
+          <img src="{{ userProfile?.sexe === 'femme' ? '/assets/img/femme.jpeg' : '/assets/img/homme.jpeg' }}" alt="" style=" width: 40px; height: 40px; border-radius: 50%; z-index: 0;">
+          <div style="position: absolute; bottom: -1px; right: -1px; width: 15px; height: 15px; border-radius: 50%; background-color: green; border: 2px solid white; z-index: 1;"></div>
+        </a>
+
+
+
+
+        <div class="dropdown-content" [ngClass]="{ 'open': dropdownOpen }">
+          <a  class="profile-name">{{ userProfile?.nom }} {{ userProfile?.prenom }}</a>
+          <a  class="text" [routerLink]="['/auth/profile']">
+            <i class="fa-solid fa-user fa-xs"></i>
+            Profil
+          </a>
+          <a href="#" class="logout" style="color: #DB504A;">
+            <i class='bx bxs-log-out-circle'></i>
+            <span class="text" (click)="onLogout()">Déconnexion</span>
+          </a>
+        </div>
+      </div>
+
+
+  </nav>
+</div>
+  <!-- NAVBAR -->
+  <div class="notification-modal" *ngIf="showNotification" (click)="toggleNotification()">
+    <div class="notification-box" (click)="$event.stopPropagation()">
+      <table id="message-history" class="table table-striped">
+        <div class="notification-box-header">
+          <a class="voir-tout" [routerLink]="['/notifications']" >Voir tout</a>
+        </div>
+        <tbody>
+          <tr *ngFor="let notification of notifications">
+            <td (click)="showNotificationContent(notification)"     [routerLink]="['/notification', notification.id]">
+              <a  [ngStyle]="{ color: notification.lu === 1 ? 'grey' : 'inherit' }">{{ notification.subject }}</a>
+              <span class="delete-icon" title="Supprimer" (click)="deleteNotification(notification)">
+                <i class="fas fa-times"></i>
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

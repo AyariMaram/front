@@ -1,0 +1,87 @@
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+  <app-layout></app-layout>
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Demande Congé</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Congés</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li (click)="redirectToHome()">
+            <a class="active" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  <div class="formulaire-container">
+
+    <form (submit)="ajouterConge()" [formGroup]="FormCongee" class="conge-form">
+      <div class="alert alert-danger" *ngIf="showFiledError">Veuillez remplir tous les champs</div>
+
+      <div class="alert" [ngClass]="{'alert-success': message === 'Congé ajouté avec succès', 'alert-warning': message === 'Deux personnes de votre service ont déjà pris un congé pendant cette période.'}">
+        {{ message }}
+      </div>
+
+      <div class="form-group">
+        <div class="input-container">
+          <label for="type">Type</label>
+          <select class="form-control small-input select-input" id="type" formControlName="type" name="type" required>
+            <option value="" disabled selected>Choisir le type de congé</option>
+            <option *ngIf="solde >= 30" [value]="'ANNUEL'">Annuel</option>
+            <option *ngIf="solde < 30" [value]="'EXCEPTIONNEL'">Exceptionnel</option>
+            <option  [value]="'MALADIE'">Maladie</option>
+            <option value="MATERNITE" *ngIf="isWomanAndMarried(sexe, statut)">Maternité</option>
+          </select>
+        </div>
+        <div *ngIf="FormCongee.get('type')?.value === 'EXCEPTIONNEL'" class="input-container">
+          <label for="motif">Motif</label>
+
+          <select class="form-control small-input" id="motif" formControlName="motif">
+            <option value="" disabled selected>Choisir le motif</option>
+            <option *ngFor="let option of motifOptions" [value]="option.value">{{ option.label }}</option>
+          </select>
+          <br>
+          <textarea *ngIf="FormCongee.get('motif')?.value === 'Autre'" class="form-control" id="description" formControlName="description" placeholder="Description"></textarea>
+
+        </div>
+      </div>
+
+      <div *ngIf="FormCongee.get('type')?.value !== 'MATERNITE'" class="input-container">
+        <label for="duree">Durée (en jours)</label>
+        <input type="number" class="form-control small-input" id="duree" formControlName="duree" name="duree" required>
+      </div>
+
+
+      <div class="form-group">
+        <div class="input-container">
+          <label for="dateDebut">Date de début</label>
+          <input type="date" class="form-control small-input" id="dateDebut" formControlName="date_debut" name="dateDebut" required>
+        </div>
+        <div class="input-container">
+          <label for="fichier">Fichier(certificat ou preuve)</label>
+          <input id="fichier" class="form-control file-input" type="file" (change)="onChange($event)" />
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      <br>
+      <p style="background-color: #f0f0f0; padding: 10px;">Attention : Votre demande de congé sera rejetée si deux personnes de votre service sont déjà en congé pour la même période que vous.</p>
+    </form>
+  </div>
+
+

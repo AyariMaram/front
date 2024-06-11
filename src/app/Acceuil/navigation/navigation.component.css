@@ -1,0 +1,68 @@
+@import url(../../home.css);
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+  }
+  #mainNav .navbar-brand {
+    padding: 0.5rem 0;
+    color: #261b91;
+  }
+  #mainNav .nav-link {
+    transition: none;
+    padding: 2rem 1.5rem;
+    color: #261b91;
+  }
+  #mainNav .nav-link:hover {
+    color: #261b91;
+  }
+  #mainNav .nav-link:active {
+    color: #fff;
+  }
+  #mainNav.navbar-shrink {
+    background-color: #fff;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    color: #261b91;
+  }
+  #mainNav.navbar-shrink .nav-link {
+    color: #261b91;
+    padding: 1.5rem 1.5rem 1.25rem;
+    border-bottom: 0.25rem solid transparent;
+  }
+
+
+}
+
+.navlink {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 18px;
+}
+
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: #261b91;
+    padding: 10px;
+    border-radius: 5px;
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+}
+
+/* nav bar */
+@media (max-width: 991.98px) {
+  .navbar {
+      position: fixed;
+      width: 100%;
+      background-color: #261b91;
+      z-index: 1000;
+  }
+}
+}

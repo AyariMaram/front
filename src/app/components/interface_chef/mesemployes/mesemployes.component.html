@@ -1,0 +1,88 @@
+
+<!---->
+
+<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<!-- My CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+<!-- My js -->
+<script src="/assets/js/script.js"></script>
+<!-- CONTENT -->
+<div >
+<section id="content" >
+  <app-layout></app-layout>
+
+  <!-- MAIN -->
+  <main>
+    <div class="head-title">
+      <div class="left">
+        <h1>Employés</h1>
+        <ul class="breadcrumb">
+          <li>
+            <a href="#">Employés</a>
+          </li>
+          <li><i class='bx bx-chevron-right' ></i></li>
+          <li>
+            <a class="active" [routerLink]="['/homee']" >Acceuil</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="table-data">
+      <div class="order">
+        <div class="head">
+          <h3>Employés</h3>
+          <i class='bx bx-search' title="Rechercher" (click)="openSearchBox()"></i>
+          <div *ngIf="showSearchBox" class="search-box">
+            <input #searchInput type="text" placeholder="Rechercher ..."  (keyup.enter)="searchUsers(searchInput.value)" >
+          </div>          <div>
+          </div>
+
+
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Cin</th>
+              <th>Matricule</th>
+              <th>Nom  </th>
+              <th>Prenom </th>
+              <th>Adresse </th>
+              <th>Service </th>
+              <th>Téléphone</th>
+              <th>Statut</th>
+              <th>Sexe</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employe of employes">
+              <td>
+
+              </td>
+              <td> {{employe.cin}}</td>
+              <td> {{employe.matricule}}</td>
+              <td> {{employe.nom}}</td>
+              <td>{{ employe.prenom }}</td>
+              <td>{{ employe.email }}</td>
+              <td>{{ employe.service }}</td>
+              <td>{{ employe.tel }}</td>
+              <td>{{ employe.statut }}</td>
+              <td>{{ employe.sexe }}</td>
+              <td>{{ employe.role }}</td>
+
+             </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+
+
+
+  </main>
+</section>
+</div>
